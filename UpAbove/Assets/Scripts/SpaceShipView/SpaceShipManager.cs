@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SpaceShipManager : MonoBehaviour
 {
@@ -41,13 +40,10 @@ public class SpaceShipManager : MonoBehaviour
 
     }
 
-    public void LoadPlanet(string PlanetName)
-    {
-        SceneManager.LoadScene(PlanetName);
-    }
     // Update is called once per frame
     void Update()
     {
+        //print("shake " + shakeDuration);
         if (shakeDuration > 0)
         {
             camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;

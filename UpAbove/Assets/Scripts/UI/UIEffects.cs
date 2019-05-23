@@ -6,8 +6,22 @@ using UnityEngine.UI;
 public class UIEffects : MonoBehaviour {
      IEnumerator coroutine;
      bool disabling;
+    public bool facingCamera;
+    public bool fadeInAtStart;
 
-	 public void fadeOut(float speed)
+    private void Start()
+    {
+        if (facingCamera)
+        {
+            transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward,
+            Camera.main.transform.rotation * Vector3.up);
+        }
+        if (fadeInAtStart)
+        {
+            fadeIn(1);
+        }
+    }
+    public void fadeOut(float speed)
 	 {
         if(coroutine != null) StopCoroutine(coroutine);
         coroutine = fadePanelCoroutine(speed);
@@ -15,6 +29,7 @@ public class UIEffects : MonoBehaviour {
         StartCoroutine(coroutine);
 	 }
 	 
+
 	private IEnumerator fadePanelCoroutine(float speed)    {
 		
 		while(GetComponent<CanvasGroup>().alpha > 0){
@@ -24,7 +39,16 @@ public class UIEffects : MonoBehaviour {
 
 	//	transform.localScale = new Vector3(0f,0f,0f);
 	}
-	
+
+    public void triggerMainAnimation()
+    {
+        print("triggeringAnimation");
+        if(GetComponent<Animator>())
+        {
+            print("AnimatorFound");
+            GetComponent<Animator>().Play("MainAnim");
+        }
+    }
 	public void fadeIn(float speed){
         if (disabling) return;
         //	transform.localScale = new Vector3(1f,1f,1f);

@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
     float sightDistance = 50f;
     public float fadeRate;
+    public UIEffects detachButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +27,9 @@ public class PlayerBehavior : MonoBehaviour
             //Debug.DrawRay(transform.position, transform.forward, Color.green, 2, false);
             if (Physics.Raycast(forwardRay, out hit, sightDistance))
             {
-                print(hit.transform.gameObject.name);
-                if(hit.transform.gameObject.name == "PodEject")
+                if(hit.transform.gameObject.tag == "Button")
                 {
-                    StartCoroutine(StartPlanetLanding());
+                    hit.transform.gameObject.GetComponent<Button>().onClick.Invoke();
                 }
             }
         }
@@ -39,10 +41,14 @@ public class PlayerBehavior : MonoBehaviour
     }
 
 
-
+    public void EjectAnimationCamera()
+    {
+        StartCoroutine(StartPlanetLanding());
+    }
 
     IEnumerator StartPlanetLanding()
     {
+        GetComponent<Animator>().enabled = true;
         //while (GetComponent<Animator>().is)
         GetComponent<Animator>().Play("mountPod");
         yield return new WaitForSeconds(2f);

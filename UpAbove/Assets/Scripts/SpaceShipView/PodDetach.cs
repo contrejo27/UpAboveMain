@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PodDetach : MonoBehaviour
 {
@@ -9,21 +10,21 @@ public class PodDetach : MonoBehaviour
     public Material podInside;
     public float fadeRate;
     public CanvasGroup screenEffect;
-    public SpaceShipManager shipManager;
-
+    
     IEnumerator StartFadeOut()
     {
         if (keyLight)
         {
-            while (keyLight.intensity <= 15.0f)
+            while (keyLight.intensity <= 11.0f)
             {
                 yield return new WaitForSeconds(.01f);
                 keyLight.intensity += fadeRate;
                 RenderSettings.ambientIntensity += fadeRate*2.0f;
+                RenderSettings.fogDensity += fadeRate *.0005f;
                 screenEffect.alpha += fadeRate*.1f;
                 bounceLight.intensity += fadeRate * .1f;
             }
-            shipManager.LoadPlanet("Mars");
+            GameManager.Instance.LoadPlanet("Mars");
         }
     }
 
