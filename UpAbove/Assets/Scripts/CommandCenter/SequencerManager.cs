@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SequencerManager : MonoBehaviour
 {
     public SequencerLight[] sequencerLights;
+    public GameObject shipNav;
 
     //timer
     public float timeLeft = 20f;
@@ -32,7 +33,7 @@ public class SequencerManager : MonoBehaviour
             timerText.text = timeLeft.ToString("F1") + "s";
             if (timeLeft < 0)
             {
-                Launch();
+                LaunchReady();
             }
             else timeLeft -= Time.deltaTime;
 
@@ -86,9 +87,14 @@ public class SequencerManager : MonoBehaviour
         startTimer = false;
     }
 
-    void Launch()
+    void LaunchReady()
     {
         launchButton.interactable = true;
-        print("LaunchReady");
     }
+    public void SwitchScreens()
+    {
+        gameObject.SetActive(false);
+        shipNav.SetActive(true);
+    }
+    
 }
