@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     //Player
-    public GameObject itemHeld;
     public enum PlayerState { Grabbing, Idle};
 
     public PlayerState currentPlayerState;

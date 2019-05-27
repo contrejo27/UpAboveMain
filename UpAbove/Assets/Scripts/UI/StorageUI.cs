@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class StorageUI : MonoBehaviour
 {
+    public GameObject[] itemUISlots;
+
     Transform originalPos = null;
     // Start is called before the first frame update
     void Start()
     {
-
+        InventoryManager.Instance.itemSlots = itemUISlots;
     }
 
     public void HoldPosition()

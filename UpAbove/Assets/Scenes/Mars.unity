@@ -157,6 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 139249325}
   - component: {fileID: 139249326}
+  - component: {fileID: 139249327}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -190,8 +191,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25081ff22cacef4fbb9249a635149f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemHeld: {fileID: 0}
   currentPlayerState: 0
+--- !u!114 &139249327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139249324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c478c8d728a940e4d8577cfbf4769e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsInInventory: []
+  itemsEquipped: []
+  maxInventory: 6
+  itemHeld: {fileID: 0}
+  itemSlots: []
 --- !u!1 &217676722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01718cc49197e7447a284d2bb495714d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jetpackActivated: 0
   itemViewerParent: {fileID: 217676722}
   descriptionBox: {fileID: 791478065}
   storageConfirm: {fileID: 3037111737104075506, guid: 784f33d1ac9a3a04a9b07593b2399b45,

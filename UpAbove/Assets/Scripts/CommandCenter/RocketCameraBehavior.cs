@@ -34,7 +34,7 @@ public class RocketCameraBehavior : MonoBehaviour
         rocketBooster2.transform.parent = null;
         EnablePhysics(rocketBooster);
         rocketBooster.transform.parent = null;
-        yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(16f);
         SequencerBehavior.SwitchScreens();
     }
 

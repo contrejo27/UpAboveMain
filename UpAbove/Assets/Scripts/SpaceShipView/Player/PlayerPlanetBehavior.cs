@@ -7,9 +7,9 @@ public class PlayerPlanetBehavior : MonoBehaviour
 {
     //how far you can shoot a teleport raycast
     float sightDistance = 100f;
+    bool jetpackActivated= false;
 
     bool jetpackThrust = false;
-    public bool jetpackActivated = false;
     //items
     public GameObject itemViewerParent;
     public GameObject descriptionBox;
@@ -18,6 +18,7 @@ public class PlayerPlanetBehavior : MonoBehaviour
     GameObject grabbedItem;
 
     public static PlayerPlanetBehavior Instance { get; private set; }
+
 
     void Awake()
     {
@@ -46,7 +47,6 @@ public class PlayerPlanetBehavior : MonoBehaviour
                 //if not grabbing and you hit the land teleport.
                 if (hit.transform.gameObject.name == "MarsTerrainLP")
                 {
-                    print("GroundTapped");
                     if (GameManager.Instance.currentPlayerState == GameManager.PlayerState.Grabbing)
                     {
                         DropItem();
@@ -60,21 +60,25 @@ public class PlayerPlanetBehavior : MonoBehaviour
                 else if (hit.transform.gameObject.tag == "Item")
                 {
                     grabbedItem = hit.transform.gameObject;
-                    GameManager.Instance.itemHeld = grabbedItem;
+                    InventoryManager.Instance.itemHeld = grabbedItem;
                     GrabItem();
                 }
                 else if (hit.transform.gameObject.tag == "Button")
                 {
-                    print("ButtonPressed");
                     hit.transform.gameObject.GetComponent<Button>().onClick.Invoke();
                 }
 
             }
             else
             {
-                gameObject.GetComponent<Rigidbody>().isKinematic = false;
-                gameObject.GetComponent<Rigidbody>().useGravity = true;
-                if(jetpackActivated) jetpackThrust = true;
+                if (jetpackActivated)
+                {
+                    gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                    gameObject.GetComponent<Rigidbody>().useGravity = true;
+                    jetpackThrust = true;
+                }
+
+
             }
 
         }
@@ -82,12 +86,19 @@ public class PlayerPlanetBehavior : MonoBehaviour
         {
             if (jetpackThrust)
             {
+                print("booosting");
+
                 gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up *30 + Vector3.forward *6);
             }
         }
 
     }
 
+    public void ActivateJetpack()
+    {
+        jetpackActivated = true;
+        jetpackThrust = true;
+    }
     //when you collide with the ground, stay there
     private void OnCollisionEnter(Collision collision)
     {
@@ -101,7 +112,6 @@ public class PlayerPlanetBehavior : MonoBehaviour
     {
         Vector3 OGPos = transform.position;
         float slide = 0f;
-        print("teleporting");
         while (slide<1.0f)
         {
             transform.position = Vector3.Lerp(OGPos, new Vector3(teleportRaycast.point.x, teleportRaycast.point.y + 4, teleportRaycast.point.z),slide);
@@ -129,8 +139,8 @@ public class PlayerPlanetBehavior : MonoBehaviour
         grabbedItem.GetComponent<BoxCollider>().enabled = true;
         grabbedItem.GetComponent<Rigidbody>().useGravity = true;
         descriptionBox.SetActive(false);
-        GameManager.Instance.itemHeld = null;
-        Destroy(storageConfirmInstance);
+        InventoryManager.Instance.itemHeld = null;
+        storageConfirmInstance.SetActive(false);
     }
 
     public void StartPodDetach()

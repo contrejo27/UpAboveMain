@@ -357,7 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f997aa209cf22e4a8cce659a0cb3614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throttle: 10000
+  throttle: 1000
+  boostButton: {fileID: 0}
 --- !u!1001 &115003351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -955,10 +956,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410545729}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &410545732
@@ -978,7 +979,7 @@ Transform:
   m_GameObject: {fileID: 410545729}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -368.7, y: -10, z: 193}
-  m_LocalScale: {x: 374.4, y: 500, z: 500}
+  m_LocalScale: {x: 756.5875, y: 3058.35, z: 500}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -1326,7 +1327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f997aa209cf22e4a8cce659a0cb3614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throttle: 10000
+  throttle: 100
+  boostButton: {fileID: 0}
 --- !u!114 &534253798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1339,7 +1341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f997aa209cf22e4a8cce659a0cb3614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throttle: 0
+  throttle: 1000
+  boostButton: {fileID: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,11 +2642,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1442804556}
-  - component: {fileID: 1442804558}
   - component: {fileID: 1442804559}
   - component: {fileID: 1442804557}
+  - component: {fileID: 1442804558}
   m_Layer: 0
-  m_Name: down_hover
+  m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2706,50 +2709,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1442804555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b90e80a6c172549ab7b26da72246c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: b23993940570ca14c9c8185a3ef87c95, type: 3}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1442804557}
-  m_OnClick:
+  onLongClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 534253797}
-        m_MethodName: Boost
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  booster: {fileID: 22490842}
 --- !u!222 &1442804559
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3360,11 +3328,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1960968941}
-  - component: {fileID: 1960968942}
   - component: {fileID: 1960968944}
   - component: {fileID: 1960968943}
+  - component: {fileID: 1960968942}
   m_Layer: 0
-  m_Name: down_hover (1)
+  m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3398,50 +3366,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1960968940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b90e80a6c172549ab7b26da72246c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: b23993940570ca14c9c8185a3ef87c95, type: 3}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1960968943}
-  m_OnClick:
+  onLongClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 22490842}
-        m_MethodName: Boost
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  booster: {fileID: 22490842}
 --- !u!114 &1960968943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3491,7 +3424,7 @@ GameObject:
   - component: {fileID: 1997946067}
   - component: {fileID: 1997946066}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3521,7 +3454,7 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 4480caefcac3ed94f9471ac13b561a20, type: 2}
-  m_EnableTreeColliders: 1
+  m_EnableTreeColliders: 0
 --- !u!218 &1997946067
 Terrain:
   m_ObjectHideFlags: 0
@@ -4402,7 +4335,7 @@ MonoBehaviour:
   - {fileID: 19}
   - {fileID: 20}
   shipNav: {fileID: 3641186847913298833}
-  timeLeft: 6
+  timeLeft: 30
   timerText: {fileID: 7278707339716454895}
   launchButton: {fileID: 901606836}
 --- !u!114 &4763401262413496467
