@@ -60,7 +60,8 @@ public class UIEffects : MonoBehaviour {
 	 
 	private IEnumerator FadeInPanelCoroutine(float speed){
 			while(GetComponent<CanvasGroup>().alpha < 1){
-			GetComponent<CanvasGroup>().alpha += Time.deltaTime * speed;
+
+            GetComponent<CanvasGroup>().alpha += Time.deltaTime * speed;
 			yield return null;
 		}
 	}
