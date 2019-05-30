@@ -16,6 +16,7 @@ public class PlayerPlanetBehavior : MonoBehaviour
     public GameObject storageConfirm;
     GameObject storageConfirmInstance;
     GameObject grabbedItem;
+    public GameObject teleportSprite;
 
     public static PlayerPlanetBehavior Instance { get; private set; }
 
@@ -35,29 +36,33 @@ public class PlayerPlanetBehavior : MonoBehaviour
     void Update()
     {
         //if you tap, shoot a ray and check what it is
-        if (Input.GetButtonDown("Fire1"))
-        {
+
             RaycastHit hit;
             Ray forwardRay = new Ray(transform.position, transform.forward);
-            // GameObject tempCube = Instantiate(GameObject.Find("Cube"), forwardRay.origin, transform.rotation);
-            //Debug.DrawRay(transform.position, transform.forward, Color.green, 200, false);
+
             if (Physics.Raycast(forwardRay, out hit, sightDistance))
             {
-
-                //if not grabbing and you hit the land teleport.
+                teleportSprite.transform.position = hit.point;
                 if (hit.transform.gameObject.name == "MarsTerrainLP")
                 {
+                //hit the land teleport.
+
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    //drop your item if you try and teleport with it. 
                     if (GameManager.Instance.currentPlayerState == GameManager.PlayerState.Grabbing)
                     {
                         DropItem();
                     }
+                    //teleport if you aren't flying
                     else if (jetpackThrust == false)
                     {
                         StartCoroutine(Teleport(hit));
-
                     }
                 }
-                else if (hit.transform.gameObject.tag == "Item")
+            }
+                //
+            else if (hit.transform.gameObject.tag == "Item")
                 {
                     grabbedItem = hit.transform.gameObject;
                     InventoryManager.Instance.itemHeld = grabbedItem;
@@ -67,8 +72,8 @@ public class PlayerPlanetBehavior : MonoBehaviour
                 {
                     hit.transform.gameObject.GetComponent<Button>().onClick.Invoke();
                 }
-
-            }
+                
+            
             else
             {
                 if (jetpackActivated)
