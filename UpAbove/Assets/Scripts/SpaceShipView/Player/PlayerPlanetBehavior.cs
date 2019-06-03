@@ -42,9 +42,10 @@ public class PlayerPlanetBehavior : MonoBehaviour
 
             if (Physics.Raycast(forwardRay, out hit, sightDistance))
             {
-                teleportSprite.transform.position = hit.point;
                 if (hit.transform.gameObject.name == "MarsTerrainLP")
                 {
+                teleportSprite.transform.position = new Vector3(hit.point.x, hit.point.y + .4f, hit.point.z);
+
                 //hit the land teleport.
 
                 if (Input.GetButtonDown("Fire1"))
