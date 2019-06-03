@@ -40,7 +40,7 @@ public class UIEffects : MonoBehaviour {
 	//	transform.localScale = new Vector3(0f,0f,0f);
 	}
 
-    public void triggerMainAnimation()
+    public void TriggerMainAnimation()
     {
         print("triggeringAnimation");
         if(GetComponent<Animator>())

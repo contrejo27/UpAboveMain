@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    float sightDistance = 50f;
+    float sightDistance = 40f;
     public float fadeRate;
-    public UIEffects detachButton;
 
     // Start is called before the first frame update
     void Start()
