@@ -36,8 +36,6 @@ public class UIEffects : MonoBehaviour {
 			GetComponent<CanvasGroup>().alpha -= Time.deltaTime * speed;
 			yield return null;
 		}
-
-	//	transform.localScale = new Vector3(0f,0f,0f);
 	}
 
     public void TriggerMainAnimation()
