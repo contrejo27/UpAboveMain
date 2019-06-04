@@ -1,0 +1,7 @@
+
+<---------------------Moon Base------------------->
+
+Add Layer 8 terrain
+Select the scene terrain layer to terrain
+Play game and press "space" to launch the rocket, rocket stages deploy automatically
+Zoom out/in with mouse scroll wheel
