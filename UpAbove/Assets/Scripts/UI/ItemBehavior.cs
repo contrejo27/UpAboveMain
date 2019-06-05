@@ -7,6 +7,9 @@ public class ItemBehavior : MonoBehaviour
 {
     public Sprite itemImage;
     public GameManager.ItemType ItemType;
+    public string itemTitle;
+    public string itemDescription;
+    public GameObject itemPrefab;
 
 
 

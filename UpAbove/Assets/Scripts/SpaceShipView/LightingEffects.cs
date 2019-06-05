@@ -41,7 +41,6 @@ public class LightingEffects : MonoBehaviour
             float OGAmbientIntensity = RenderSettings.ambientIntensity;
             float OGFogDensity = RenderSettings.fogDensity;
             float OGscreenEffect = screenEffect.alpha;
-            print("fadingIn");
             for (float fadeAmount = 1.0f; fadeAmount > -.2; fadeAmount -= fadeRate / 1000)
             {
                 yield return new WaitForSeconds(.01f);

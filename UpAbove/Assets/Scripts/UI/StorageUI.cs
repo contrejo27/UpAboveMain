@@ -8,8 +8,9 @@ public class StorageUI : MonoBehaviour
 
     Transform originalPos = null;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        print("Grabbing correct storageUI");
         InventoryManager.Instance.itemSlots = itemUISlots;
     }
 

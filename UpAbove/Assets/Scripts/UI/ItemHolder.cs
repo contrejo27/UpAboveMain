@@ -9,11 +9,8 @@ public class ItemHolder : MonoBehaviour
     //TODO: migrate all this to inventory manager or item behavior or storage UI
     public void addNewItem()
     {
-        GameObject.Find("DescriptionBox").SetActive(false);
         InventoryManager.Instance.AddItem();
-        Destroy(gameObject);
-
-
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     // Update is called once per frame

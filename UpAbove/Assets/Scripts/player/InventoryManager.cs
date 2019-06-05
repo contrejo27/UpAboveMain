@@ -25,10 +25,12 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     public void AddItem()
     {
+        GameObject.Find("DescriptionBox").SetActive(false);
+
         //make player idle
         GameManager.Instance.currentPlayerState = GameManager.PlayerState.Idle;
-        //upgrade items will do special things when equipped
 
+        //upgrade items will do special things when equipped
         if (itemHeld.GetComponent<ItemBehavior>().ItemType == GameManager.ItemType.Upgrade)
         {
 
@@ -40,18 +42,33 @@ public class InventoryManager : MonoBehaviour
             }
 
             //keep track of equipped items
-            itemsEquipped.Add(itemHeld);
+            itemsEquipped.Add(itemHeld.GetComponent<ItemBehavior>().itemPrefab);
 
         }
         else
         {
             //Show item slot in inventory with correct sprite
-            itemSlots[0].transform.GetChild(0).gameObject.SetActive(true);
-            itemSlots[0].transform.GetChild(0).GetComponent<Image>().sprite = itemHeld.GetComponent<ItemBehavior>().itemImage;
-            itemsInInventory.Add(itemHeld);
+            print("grabbed research Item");
+            itemSlots[itemsInInventory.Count].transform.GetChild(0).gameObject.SetActive(true);
+            itemSlots[itemsInInventory.Count].transform.GetChild(0).GetComponent<Image>().sprite = itemHeld.GetComponent<ItemBehavior>().itemImage;
+            itemsInInventory.Add(itemHeld.GetComponent<ItemBehavior>().itemPrefab);
         }
 
         Destroy(itemHeld);
+    }
+
+    public void PopulateStorageUI()
+    {
+        int itemPos = 0;
+        print("populating " + itemsInInventory.Count);
+
+        foreach (GameObject item in itemsInInventory)
+        {
+            print("populating " + item.name + " in " + itemPos);
+            itemSlots[itemPos].transform.GetChild(0).gameObject.SetActive(true);
+            itemSlots[itemPos].transform.GetChild(0).GetComponent<Image>().sprite = itemHeld.GetComponent<ItemBehavior>().itemImage;
+            itemPos++;
+        }
     }
 
     void Start()
