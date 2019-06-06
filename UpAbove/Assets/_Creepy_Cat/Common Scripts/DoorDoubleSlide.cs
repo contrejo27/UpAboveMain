@@ -55,7 +55,10 @@ public class DoorDoubleSlide : MonoBehaviour {
         audio.Play();
     }
 	
-
+    public void OpenDoor()
+    {
+        opening = true;
+    }
     //Open or close doors
 	void Update () {
         // Direction selection

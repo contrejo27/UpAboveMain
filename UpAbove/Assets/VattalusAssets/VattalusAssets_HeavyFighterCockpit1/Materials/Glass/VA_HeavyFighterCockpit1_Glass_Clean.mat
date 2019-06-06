@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: VA_HeavyFighterCockpit1_Glass_Clean
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _METALLICGLOSSMAP
-  m_LightmapFlags: 6
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _METALLICGLOSSMAP
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -62,12 +62,12 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _EmissionScaleUI: 1
-    - _GlossMapScale: 1
+    - _GlossMapScale: 0.837
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 3
-    - _OcclusionStrength: 0
+    - _OcclusionStrength: 0.651
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -75,6 +75,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0.078431375}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.16078432}
+    - _EmissionColor: {r: 0.07489322, g: 0.07778422, b: 0.084905684, a: 1}
     - _EmissionColorUI: {r: 0, g: 0, b: 0, a: 1}

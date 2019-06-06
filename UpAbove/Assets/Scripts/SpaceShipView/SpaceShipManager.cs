@@ -16,6 +16,9 @@ public class SpaceShipManager : MonoBehaviour
     public float shakeAmount = 0.7f;
     public float decreaseFactor = 1.0f;
 
+    bool launching = true;
+    public GameObject[] spaceAsset;
+
     Color planetMaterialColor;
     void Start()
     {
@@ -43,7 +46,9 @@ public class SpaceShipManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //print("shake " + shakeDuration);
+        print("shake " + shakeDuration);
+        print("shake amnt" + shakeAmount);
+
         if (shakeDuration > 0)
         {
             camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
@@ -52,8 +57,16 @@ public class SpaceShipManager : MonoBehaviour
         }
         else
         {
+            launching = false;
+            LoadNextSpaceAsset(spaceAsset[0]);
             shakeDuration = 0f;
             camTransform.localPosition = originalPos;
         }
     }
+
+    void LoadNextSpaceAsset(GameObject asset)
+    {
+        asset.SetActive(true);
+    }
+
 }
