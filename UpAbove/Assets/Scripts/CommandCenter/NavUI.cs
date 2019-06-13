@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//used for the navigation UI in the command center. 
 public class NavUI : MonoBehaviour
 {
-    public GameObject shipIcon;
+    //path finding
     public Transform[] wayPointList;
-
     public int currentWayPoint = 0;
     Transform targetWayPoint;
-
     public float shipSpeed;
 
+    //UI
+    public GameObject shipIcon;
     Color ogShipColor;
     bool blinking;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,19 +35,21 @@ public class NavUI : MonoBehaviour
         }
     }
 
+    //Trigger error that makes ship blink. you have to tap it and solve a math problem.
     IEnumerator TriggerShipError()
     {
         yield return new WaitForSeconds(4f);
         ShipError();
     }
 
+    //trigger blinking
     void ShipError()
     {
         ogShipColor = shipIcon.GetComponent<Image>().color;
-
         StartCoroutine("ShipBlinking");
     }
 
+    //blinks from red to normal color
     IEnumerator ShipBlinking()
     {
         blinking = true;
@@ -66,10 +70,12 @@ public class NavUI : MonoBehaviour
         }
     }
 
+    //once math problem is done, return ship to normal color
     public void ShipProblemFixed()
     {
         shipIcon.GetComponent<Image>().color = ogShipColor;
     }
+
     void walk()
     {
         // rotate towards the target. TODO: Not Working

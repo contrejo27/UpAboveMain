@@ -5,10 +5,14 @@ using UnityEngine.UI;
 
 public class BoosterControl : MonoBehaviour
 {
+    //Throttle power
     public float throttle;
     Rigidbody rb;
+
+    //UI
     public Button boostButton;
     string direction;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -21,6 +25,7 @@ public class BoosterControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //if it touches land reduce movement and let it wobble. TODO: make it wobble more, if it falls trigger lose state
         if (collision.collider.gameObject.name == "Land")
         {
             print("Safely landed");
@@ -29,9 +34,11 @@ public class BoosterControl : MonoBehaviour
 
         }
     }
+
     // Update is called once per frame
     void Update()
     {
+        //add boost up and a little tilt depending on which button you press
         if (direction == "left")
         {
             rb.AddForce(transform.up * throttle);

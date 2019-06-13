@@ -9,9 +9,9 @@ public class UrlLinker : MonoBehaviour
         Application.OpenURL("www.MagicBytes.com");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoToURLCustom(string url)
     {
-        
+        Application.OpenURL(url);
+
     }
 }

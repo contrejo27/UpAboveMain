@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Math UI
 public class MathConsole : MonoBehaviour
 {
     public GameObject previousCanvas;
     public GameObject mathProblemSource;
     
+    //after you solve a math problem go back to the screen that you were at
     public void MathProblemSolved()
     {
         previousCanvas.SetActive(true);
         gameObject.SetActive(false);
+
         if (previousCanvas.name == "Sequencer_Canvas")
         {
             previousCanvas.GetComponent<SequencerManager>().ContinueCountdown();
@@ -37,10 +41,5 @@ public class MathConsole : MonoBehaviour
     public void SetPreviousCanvas(GameObject sourceCanvas)
     {
         previousCanvas = sourceCanvas;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

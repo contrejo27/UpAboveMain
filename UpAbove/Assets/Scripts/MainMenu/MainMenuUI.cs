@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Main Menu Navigation
 public class MainMenuUI : MonoBehaviour
 {
     public GameObject[] UIs;
     public GameObject[] buttons;
-    // Start is called before the first frame update
 
     private void Start()
     {
         StartCoroutine("InitialAnimations");
     }
+
+
     public void GoToUI(string UIName)
     {
         foreach(GameObject UI in UIs)

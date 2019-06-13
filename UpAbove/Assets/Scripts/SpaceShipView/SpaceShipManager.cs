@@ -42,7 +42,10 @@ public class SpaceShipManager : MonoBehaviour
         }
 
     }
-
+    public void UndockChair()
+    {
+        GetComponent<Animator>().Play("spaceShipUndock");
+    }
     // Update is called once per frame
     void Update()
     {

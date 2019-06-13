@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Controls inventory adding, editing, removing etc
 public class InventoryManager : MonoBehaviour
 {
+    // Inventory behavior
     public List<GameObject> itemsInInventory;
     public List<GameObject> itemsEquipped;
     public int maxInventory = 6;
     public GameObject itemHeld;
-    public static InventoryManager Instance { get; private set; }
+
+    //UI
     public GameObject[] itemSlots;
+
+    //singleton
+    public static InventoryManager Instance { get; private set; }
 
     void Awake()
     {
@@ -22,9 +28,10 @@ public class InventoryManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // Start is called before the first frame update
+    // Called when you add inventory
     public void AddItem()
     {
+        //hide description box
         GameObject.Find("DescriptionBox").SetActive(false);
 
         //make player idle
@@ -57,27 +64,19 @@ public class InventoryManager : MonoBehaviour
         Destroy(itemHeld);
     }
 
+    //fills backpack with items in inventory
     public void PopulateStorageUI()
     {
         int itemPos = 0;
-        print("populating " + itemsInInventory.Count);
 
         foreach (GameObject item in itemsInInventory)
         {
-            print("populating " + item.name + " in " + itemPos);
+            //puts image in slot
             itemSlots[itemPos].transform.GetChild(0).gameObject.SetActive(true);
             itemSlots[itemPos].transform.GetChild(0).GetComponent<Image>().sprite = itemHeld.GetComponent<ItemBehavior>().itemImage;
             itemPos++;
         }
     }
 
-    void Start()
-    {
-        
-    }
 
-    void Update()
-    {
-        
-    }
 }

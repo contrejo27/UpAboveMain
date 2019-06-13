@@ -37,7 +37,6 @@ public class LandingEffects : MonoBehaviour
         else
         {
             shakeDuration = 0f;
-            //camTransform.localPosition = originalPos;
         }
     }
 }
