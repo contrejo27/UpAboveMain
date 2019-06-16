@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//starts at landing of a planet
 public class LandingEffects : MonoBehaviour
 {
 
@@ -17,15 +18,14 @@ public class LandingEffects : MonoBehaviour
     public float shakeAmount = 0.7f;
     public float decreaseFactor = 1.0f;
 
-    // Start is called before the first frame update
+    // start fading lighting
     void Start()
     {
         originalPos = camTransform.localPosition;
         lighting.FadeFromWhite();
-
     }
 
-    // Update is called once per frame
+    // camera shake
     void Update()
     {
         if (shakeDuration > 0)

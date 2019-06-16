@@ -15,10 +15,4 @@ public class ButtonBehavior : MonoBehaviour
             GOToActivate.SetActive(true);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

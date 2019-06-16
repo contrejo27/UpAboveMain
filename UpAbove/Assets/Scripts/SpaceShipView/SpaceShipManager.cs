@@ -20,6 +20,8 @@ public class SpaceShipManager : MonoBehaviour
     public GameObject[] spaceAsset;
 
     Color planetMaterialColor;
+
+    // Launch starts as soon as scene starts but it should be moved to a button at some point
     void Start()
     {
         originalPos = camTransform.localPosition;
@@ -27,6 +29,7 @@ public class SpaceShipManager : MonoBehaviour
         StartCoroutine("FadeSky");
     }
 
+    // Fades planet sky out to transparent so it looks like you're leaving the atmosphere
     IEnumerator FadeSky()
     {
         bool fading = true;
@@ -40,13 +43,15 @@ public class SpaceShipManager : MonoBehaviour
 
             yield return new WaitForSeconds(.01f);
         }
-
     }
+
+    // Happens when you arrive to the space station
     public void UndockChair()
     {
         GetComponent<Animator>().Play("spaceShipUndock");
     }
-    // Update is called once per frame
+
+    // Initial camera shake when launching. this should be triggered when launch happens right now it's just at start. 
     void Update()
     {
         print("shake " + shakeDuration);

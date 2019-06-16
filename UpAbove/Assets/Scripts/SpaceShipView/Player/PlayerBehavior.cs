@@ -8,13 +8,7 @@ public class PlayerBehavior : MonoBehaviour
     float sightDistance = 40f;
     public float fadeRate;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    // UI interaction on ship
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -32,6 +26,7 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    // Happens when pod is detached from main spaceship for landing
     public void StartPodDetach()
     {
         GameObject.Find("PodEject").GetComponent<Animator>().Play("podDetach");

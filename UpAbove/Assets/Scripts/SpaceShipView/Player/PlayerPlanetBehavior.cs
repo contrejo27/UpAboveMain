@@ -8,8 +8,8 @@ public class PlayerPlanetBehavior : MonoBehaviour
     //how far you can shoot a teleport raycast
     float sightDistance = 100f;
     bool jetpackActivated= false;
-
     bool jetpackThrust = false;
+
     //items
     public GameObject itemViewerParent;
     public GameObject descriptionBox;
@@ -18,6 +18,7 @@ public class PlayerPlanetBehavior : MonoBehaviour
     GameObject grabbedItem;
     public GameObject teleportSprite;
 
+    //Singleton
     public static PlayerPlanetBehavior Instance { get; private set; }
 
 
@@ -42,7 +43,6 @@ public class PlayerPlanetBehavior : MonoBehaviour
         //if the ray hits something
         if (Physics.Raycast(forwardRay, out hit, sightDistance))
         {
-
             //teleport hologram
             if (hit.transform.gameObject.name == "MarsTerrainLP")
             {
@@ -76,18 +76,16 @@ public class PlayerPlanetBehavior : MonoBehaviour
                 }
 
         }
-            // if you hit the sky then activate jetpack
         }
 
+        // Thrust up with jetpack
         if (Input.GetKey("space") && jetpackActivated)
         {
             jetpackThrust = true;
 
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
             gameObject.GetComponent<Rigidbody>().useGravity = true;
-
             gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up *25 + Vector3.forward *6);
-            
         }
 
     }
@@ -97,6 +95,7 @@ public class PlayerPlanetBehavior : MonoBehaviour
         print("Activating jetpack");
         jetpackActivated = true;
     }
+
     //when you collide with the ground, stay there
     private void OnCollisionEnter(Collision collision)
     {
@@ -121,20 +120,24 @@ public class PlayerPlanetBehavior : MonoBehaviour
     }
     public void GrabItem()
     {
-        GameManager.Instance.currentPlayerState = GameManager.PlayerState.Grabbing;    
+        GameManager.Instance.currentPlayerState = GameManager.PlayerState.Grabbing; 
+        
+        //move item to hand
         grabbedItem.GetComponent<Rigidbody>().useGravity = false;
+        grabbedItem.GetComponent<BoxCollider>().enabled = false;
+        grabbedItem.transform.position = itemViewerParent.transform.position;
+        grabbedItem.transform.parent = itemViewerParent.transform;
 
         //populate description box
         descriptionBox.SetActive(true);
         descriptionBox.transform.GetChild(0).GetComponent<Text>().text = grabbedItem.GetComponent<ItemBehavior>().itemTitle;
         descriptionBox.transform.GetChild(1).GetComponent<Text>().text = grabbedItem.GetComponent<ItemBehavior>().itemDescription;
 
-        grabbedItem.GetComponent<BoxCollider>().enabled = false;
-        grabbedItem.transform.position = itemViewerParent.transform.position;
-        grabbedItem.transform.parent = itemViewerParent.transform;
+        //set up storage UI
         storageConfirmInstance = Instantiate(storageConfirm, transform.position, Quaternion.LookRotation(Camera.main.transform.forward));
         InventoryManager.Instance.PopulateStorageUI();
     }
+
 
     public void DropItem()
     {
@@ -153,12 +156,9 @@ public class PlayerPlanetBehavior : MonoBehaviour
     }
 
     IEnumerator StartPlanetLanding()
-
     {
         GetComponent<Animator>().enabled = true;
-        //while (GetComponent<Animator>().is)
         GetComponent<Animator>().Play("mountPod");
         yield return new WaitForSeconds(2f);
-        //GameObject.Find("PodEject").GetComponent<Animator>().Play("podDetach");
     }
 }

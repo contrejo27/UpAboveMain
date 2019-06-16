@@ -10,7 +10,8 @@ public class PodDetach : MonoBehaviour
     public Material podInside;
     public float fadeRate;
     public CanvasGroup screenEffect;
-    
+
+    //fade to complete white and then switch scenes
     IEnumerator StartFadeOut()
     {
         if (keyLight)

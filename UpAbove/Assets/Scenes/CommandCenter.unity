@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.56986994, g: 0.76397485, b: 0.87784994, a: 1}
+  m_IndirectSpecularColor: {r: 0.56987, g: 0.76397306, b: 0.8778446, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2682,7 +2682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &909211964
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5267,7 +5267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09939e8daf81cde4599d5e62151d6eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipIcon: {fileID: 719869477518786430}
   wayPointList:
   - {fileID: 1439126333}
   - {fileID: 711987384}
@@ -5276,6 +5275,7 @@ MonoBehaviour:
   - {fileID: 678435919}
   currentWayPoint: 0
   shipSpeed: 30
+  shipIcon: {fileID: 719869477518786430}
 --- !u!114 &4404113372861369502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5298,9 +5298,9 @@ MonoBehaviour:
   - {fileID: 19}
   - {fileID: 20}
   shipNav: {fileID: 3641186847913298833}
+  launchButton: {fileID: 901606836}
   timeLeft: 30
   timerText: {fileID: 7278707339716454895}
-  launchButton: {fileID: 901606836}
 --- !u!114 &4763401262413496467
 MonoBehaviour:
   m_ObjectHideFlags: 0

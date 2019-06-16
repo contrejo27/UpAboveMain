@@ -10,29 +10,17 @@ public class LightingEffects : MonoBehaviour
     public Material podInside;
     public float fadeRate;
     public CanvasGroup screenEffect;
-    
-    IEnumerator StartFadeOut()
-    {
-        if (keyLight)
-        {
-            while (keyLight.intensity <= 11.0f)
-            {
-                yield return new WaitForSeconds(.01f);
-                keyLight.intensity += fadeRate;
-                RenderSettings.ambientIntensity += fadeRate*2.0f;
-                RenderSettings.fogDensity += fadeRate *.0005f;
-                screenEffect.alpha += fadeRate*.1f;
-                bounceLight.intensity += fadeRate * .1f;
-            }
-            GameManager.Instance.LoadPlanet("Mars");
-        }
-    }
+
+
+
+    //fade to complete white and then switch scenes
 
     public void FadeFromWhite()
     {
         StartCoroutine("StartFadeIn");
     }
 
+    //fade from white to normal lighting
     IEnumerator StartFadeIn()
     {
         if (keyLight)

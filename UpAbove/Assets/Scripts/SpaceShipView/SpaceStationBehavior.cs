@@ -12,9 +12,4 @@ public class SpaceStationBehavior : MonoBehaviour
         spaceShip.GetComponent<Animator>().Play("Dock");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
