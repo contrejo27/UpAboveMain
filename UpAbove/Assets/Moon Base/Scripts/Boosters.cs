@@ -21,7 +21,7 @@ public class Boosters : MonoBehaviour {
 
 	void FixedUpdate () 
 	{
-		if (MainRocket.boostersStage == true) 
+		if (MainRocket && MainRocket.boostersStage == true) 
 		{
 			Booster.isKinematic = false;
 			Booster.GetComponent<BoxCollider> ().enabled = true;
