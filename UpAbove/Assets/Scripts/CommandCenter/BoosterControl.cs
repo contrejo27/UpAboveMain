@@ -8,6 +8,7 @@ public class BoosterControl : MonoBehaviour
     //Throttle power
     public float throttle;
     Rigidbody rb;
+    public GameObject boostParticles;
 
     //UI
     public Button boostButton;
@@ -16,6 +17,11 @@ public class BoosterControl : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    public void TurnOffBoostParticles()
+    {
+        boostParticles.SetActive(false);
     }
 
     public void Boost(string currentDirection)
@@ -42,12 +48,12 @@ public class BoosterControl : MonoBehaviour
         if (direction == "left")
         {
             rb.AddForce(transform.up * throttle);
-            rb.AddTorque(transform.forward * throttle * .2f);
+            rb.AddTorque(transform.right * throttle * .2f);
         }
         else if (direction == "right")
         {
             rb.AddForce(transform.up * throttle);
-            rb.AddTorque(-transform.forward * throttle * .2f);
+            rb.AddTorque(-transform.right * throttle * .2f);
         }
     }
 }

@@ -33,7 +33,6 @@ public class RocketCameraBehavior : MonoBehaviour
         yield return new WaitForSeconds(9f);
        //release boosters from rocket
         EnablePhysics(rocketBooster2);
-        rocketBooster2.transform.parent = null;
         EnablePhysics(rocketBooster);
         rocketBooster.transform.parent = null;
         yield return new WaitForSeconds(16f);
@@ -42,7 +41,9 @@ public class RocketCameraBehavior : MonoBehaviour
 
     void EnablePhysics(GameObject GO)
     {
-        GO.GetComponent<Animator>().enabled = false;
+        //GO.GetComponent<Animator>().enabled = false;
+        GO.transform.parent = null;
+        GO.GetComponent<BoosterControl>().TurnOffBoostParticles();
         GO.GetComponent<Rigidbody>().isKinematic = false;
         GO.GetComponent<Rigidbody>().useGravity = true;
     }
